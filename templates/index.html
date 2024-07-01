@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoAdictos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-nav-container">
+                <img src="{{ url_for('static', filename='img/logo.webp') }}" alt="MotoAdictos" class="logo-img transition-soft-slow" width="400" height="200">
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('motos') }}">Motos</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                        <li><a href="{{ url_for('acerca_de') }}">Acerca de</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div>
+                <img src="{{ url_for('static', filename='img/index.webp') }}" class="index-img" alt="MotoAdictos">
+            </div>
+        </section>
+    </main>
+</body>
+</html>
