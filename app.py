@@ -5,6 +5,7 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 CORS(app)
 
+# Configuración de la conexión a la base de datos MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'cac2024'
@@ -13,6 +14,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
+# Ruta para las páginas HTML
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -29,6 +31,7 @@ def contacto():
 def acerca_de():
     return render_template('acerca_de.html')
 
+# Ruta para obtener todos los comentarios
 @app.route('/api/comments', methods=['GET'])
 def get_comments():
     cursor = mysql.connection.cursor()
@@ -37,6 +40,7 @@ def get_comments():
     cursor.close()
     return jsonify(results)
 
+# Ruta para agregar un nuevo comentario
 @app.route('/api/comments', methods=['POST'])
 def add_comment():
     data = request.get_json()
@@ -49,6 +53,7 @@ def add_comment():
     cursor.close()
     return jsonify({'message': 'Comment added successfully'}), 201
 
+# Ruta para actualizar un comentario existente
 @app.route('/api/comments/<int:id>', methods=['PUT'])
 def update_comment(id):
     data = request.get_json()
@@ -61,6 +66,7 @@ def update_comment(id):
     cursor.close()
     return jsonify({'message': 'Comment updated successfully'})
 
+# Ruta para eliminar un comentario existente
 @app.route('/api/comments/<int:id>', methods=['DELETE'])
 def delete_comment(id):
     cursor = mysql.connection.cursor()
